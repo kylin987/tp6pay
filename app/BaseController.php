@@ -6,6 +6,7 @@ namespace app;
 use think\App;
 use think\exception\ValidateException;
 use think\Validate;
+use app\lib\Show;
 
 /**
  * 控制器基础类
@@ -89,6 +90,10 @@ abstract class BaseController
         }
 
         return $v->failException(true)->check($data);
+    }
+
+    public function __call($name, $arguments) {
+        return Show::error("该方法{$name}不存在");
     }
 
 }

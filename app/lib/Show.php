@@ -1,33 +1,36 @@
 <?php
+
 namespace app\lib;
-/**
- * 通知lib
- */
-class Show
-{
+
+class Show {
     /**
-     * 成功api通知
-     * @param  array  $data    [description]
-     * @param  string $message [description]
-     * @return [type]          [description]
+     * @param array $data
+     * @param string $message
+     * @return \think\response\Json
      */
-    public static function success($data = [], $message = "OK"){
-        $results = [
-            'status'    => config("status.success"),
-            'message'   => $message,
-            'result'    => $data,
+    public static function success($data = [], $message = "OK") {
+        $result = [
+            "status" => config("status.success"),
+            "message" => $message,
+            "result" => $data
         ];
 
-        return json($results);
+        return json($result);
     }
 
-    public static function error($message = "error",$status = 0, $data = []){
-        $results = [
-            'status'    => $status,
-            'message'   => $message,
-            'result'    => $data,
+    /**
+     * @param array $data
+     * @param string $message
+     * @param int $status
+     * @return \think\response\Json
+     */
+    public static function error($message = "error", $data = [], $status = 0) {
+        $result = [
+            "status" => $status,
+            "message" => $message,
+            "result" => $data
         ];
 
-        return json($results);
+        return json($result);
     }
 }
