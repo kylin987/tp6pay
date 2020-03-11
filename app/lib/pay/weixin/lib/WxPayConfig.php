@@ -29,9 +29,11 @@ class WxPayConfig extends WxPayConfigInterface
 	 */
 	public function GetAppId()
 	{
+        return config('pay.weixin.appid');
 	}
 	public function GetMerchantId()
 	{
+        return config('pay.weixin.mchid');
 	}
 	
 	//=======【支付相关配置：支付成功回调地址/签名方式】===================================
@@ -87,9 +89,11 @@ class WxPayConfig extends WxPayConfigInterface
 	 */
 	public function GetKey()
 	{
+        return config('pay.weixin.key');
 	}
 	public function GetAppSecret()
 	{
+        return config('pay.weixin.appsecret');
 	}
 
 

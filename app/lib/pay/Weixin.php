@@ -8,6 +8,7 @@
 namespace app\lib\pay;
 use app\lib\pay\weixin\lib\database\WxPayUnifiedOrder;
 use app\lib\pay\weixin\lib\WxPayNativePay;
+use think\facade\Log;
 
 class Weixin implements PayBase{
 
@@ -32,6 +33,7 @@ class Weixin implements PayBase{
 
             $result = $notify->GetPayUrl($input);
             // 记录日志 $result
+            Log::info("weixin_pay_result_".$data['order_id']."_".$result['result_code']."_".$result['return_code']);
         }catch(\Exception $e) {
             throw new \Exception("对接微信支付内部异常");
         }
