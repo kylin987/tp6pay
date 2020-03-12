@@ -36,17 +36,19 @@ class Pay extends AuthBase
     }
 
     /**
-     * 备注下 需要讲解注解路由哦  下单API
+     * 下单API 
      * @return string
      * @Route("unifiedOrder", method="POST")
      */
     public function unifiedOrder() {
-        // 基本参数需要判断哦 小伙伴自行完成。
+        if (!$this->request->isPost()){
+            return Show::error("请求方式错误");
+        }
         $params = input("param.");
         $body = input("param.body", "", "trim");
         $goods_id = input("param.goods_id", "", "intval");
         if (empty($body) || empty($goods_id)){
-            return Show::error("商品描述和产品id不能为空");
+            return Show::error("商品描述和产品id不能为空"); 
         }
 
         try {
