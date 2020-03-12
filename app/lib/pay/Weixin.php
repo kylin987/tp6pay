@@ -30,8 +30,9 @@ class Weixin implements PayBase{
             $input->SetNotify_url(config("pay.pay_notify.weixin"));
             $input->SetTrade_type("NATIVE");
             $input->SetProduct_id($data['goods_id']);
+            Log::info(config("pay.pay_notify.weixin"));
 
-            $result = $notify->GetPayUrl($input);
+            $result = $notify->GetPayUrl($input); 
             // 记录日志 $result
             Log::info("weixin_pay_result_".$data['order_id']."_".$result['result_code']."_".$result['return_code']);
         }catch(\Exception $e) {

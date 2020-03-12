@@ -17,8 +17,8 @@ return [
      *
      */
     "pay_notify" => [
-        "weixin" => "https://pay.singwa666.com/notify.weixin",
-        "alipay" => "https://pay.singwa666.com/notify.alipay"
+        "weixin" => "http://pay.zzyanzhi.com/notify.weixin",
+        "alipay" => "http://pay.zzyanzhi.com/notify.alipay"
     ],
 
     "pay_expire" => [
@@ -34,4 +34,4 @@ return [
         'mchid' => env('weixinpay.mchid', ''),
         'key' => env('weixinpay.key', ''),
     ],
-];
+]; 
