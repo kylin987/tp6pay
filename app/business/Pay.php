@@ -12,7 +12,7 @@ use app\lib\Key;
 
 class Pay {
     /**
-     * 统一下单 - 扫码支付
+     * 统一下单 - 扫码支付   
      */
     public function unifiedOrder($appId, $payType, $data) {
         $classStats = ClassArr::payClassStat();

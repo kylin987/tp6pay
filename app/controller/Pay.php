@@ -13,7 +13,7 @@ class Pay extends AuthBase
 {
 
     /**
-     * 支付demo
+     * 支付demo  
      */
     public function index() {
         $notify = new WxPayNativePay();
@@ -43,6 +43,12 @@ class Pay extends AuthBase
     public function unifiedOrder() {
         // 基本参数需要判断哦 小伙伴自行完成。
         $params = input("param.");
+        $body = input("param.body", "", "trim");
+        $goods_id = input("param.goods_id", "", "intval");
+        if (empty($body) || empty($goods_id)){
+            return Show::error("商品描述和产品id不能为空");
+        }
+
         try {
             $result = (new PayBis())->unifiedOrder($this->appId, $this->payType, $params);
         }catch (\Exception $e) {

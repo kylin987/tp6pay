@@ -21,5 +21,5 @@ return [
         "key" => "ampqmtp",
         "expire" => 6000,
         "stitching_symbol" => "+_"
-    ]
+    ],
 ];

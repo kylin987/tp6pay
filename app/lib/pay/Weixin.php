@@ -15,7 +15,7 @@ class Weixin implements PayBase{
     /**
      * 统一下单API
      * @param $data
-     * @return string
+     * @return string 
      */
     public function unifiedOrder($data) {
         try {
@@ -30,6 +30,7 @@ class Weixin implements PayBase{
             $input->SetNotify_url(config("pay.pay_notify.weixin"));
             $input->SetTrade_type("NATIVE");
             $input->SetProduct_id($data['goods_id']);
+            $input->SetAttach($data['appid']);  
 
             $result = $notify->GetPayUrl($input); 
             // 记录日志 $result

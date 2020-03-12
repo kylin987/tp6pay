@@ -19,7 +19,7 @@ class AuthBase extends ApiBase {
         //59a387e24211c4feb09ea27da9da8d98 1582452200
         //$t = time();
         //echo md5($t."&mp"."singwa_mall&mpm*68+0sg_12")."<br />";
-        //echo $t;
+        //echo $t; 
         //exit;
         parent::initialize();
         $this->appId = input("param.appid", "", "trim");
@@ -46,7 +46,7 @@ class AuthBase extends ApiBase {
         $app = config("appuser.{$this->appId}");
         if(!$app) {
             $this->show("不存在该appid，请联系支付平台负责人申请开通", ["appid" => $this->appId]);
-        }
+        } 
 
         $data = [
             $this->time,
