@@ -67,6 +67,9 @@ class Pay extends AuthBase
      * 对外API
      */
     public function getOrder() {
+        if (!$this->request->isPost()){
+            return Show::error("请求方式错误");
+        }
         try {
             $orderId = input("param.order_id", "", "trim");
             if (!$orderId) {

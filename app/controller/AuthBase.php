@@ -14,6 +14,7 @@ class AuthBase extends ApiBase {
     public $time = 0;
     public $order_id = "";
     public $total_price = 0;
+    public $query = 0;
     public function initialize() {
         //
         //59a387e24211c4feb09ea27da9da8d98 1582452200
@@ -27,11 +28,15 @@ class AuthBase extends ApiBase {
         $this->time = input("param.time", 0, "intval");
         $this->order_id = input("param.order_id", 0, "trim");
         $this->total_price = input("param.total_price", 0, "intval");
+        $this->query = input("param.query", 0, "intval");
         if(!$this->appId || !$this->token || !$this->time) {
             $this->show("appid,token,time字段不能为空");
         }
-        if(!$this->order_id || !$this->total_price) {
-            $this->show("订单号和金额不能为空");
+        if(!$this->order_id) {
+            $this->show("订单号不能为空");
+        }
+        if (!$this->query && !$this->total_price){
+            $this->show("订单金额不能为空");
         }
         $this->checkAuth();
     }
@@ -55,6 +60,9 @@ class AuthBase extends ApiBase {
             $this->order_id,
             $this->total_price,
         ];
+        if ($this->query){
+            array_pop($data);
+        }
         // 时间检验
         if ($app['expire'] + $this->time < time() ) {
             $this->show("请求token时间已过期，请重新生成token");
